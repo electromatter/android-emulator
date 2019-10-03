@@ -27,15 +27,18 @@ COPY --chown=android:android sdk/ /home/android/sdk
 RUN cd /home/android/sdk && \
     mkdir -p /home/android/.android && \
     touch /home/android/.android/repositories.cfg && \
-    mvn versions:resolve-ranges && \
-    yes | mvn exec:java \
-        -Dexec.args="--sdk_root=/home/android/.android --licenses" && \
-    mvn exec:java \
-        -Dexec.args="--sdk_root=/home/android/.android --install tools" && \
+    mvn versions:resolve-ranges -B && \
+    yes | mvn exec:java -B \
+        -Dexec.args="--sdk_root=/home/android/.android --licenses"
+	> /dev/null && \
+    mvn exec:java -B \
+        -Dexec.args="--sdk_root=/home/android/.android --install tools"
+	| grep -v '^\[=*\s*\]' && \
     rm -r /home/android/sdk /home/android/.m2
 
 # Install the parts of the sdk we need
 RUN /home/android/.android/tools/bin/sdkmanager --install \
         emulator platform-tools \
         "platforms;android-29" \
-        "system-images;android-24;default;armeabi-v7a"
+        "system-images;android-24;default;armeabi-v7a" \
+	| grep -v '^\[=*\s*\]'

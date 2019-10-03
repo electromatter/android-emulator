@@ -9,8 +9,8 @@ FROM ubuntu:latest
 # xvfb+ffmpeg to record screen to produce test artifacts
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        build-essential cmake git wget unzip zip \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        build-essential cmake git wget unzip zip openssh-client \
         openjdk-8-jdk-headless maven \
         python python3 python-pip python3-pip \
         xvfb ffmpeg && \

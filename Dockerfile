@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:bionic
 
 # TODO: consider not installing recommended/suggested packages
 # cmake+build-essential for c
@@ -39,6 +39,6 @@ RUN cd /home/android/sdk && \
 # Install the parts of the sdk we need
 RUN /home/android/.android/tools/bin/sdkmanager --install \
         emulator platform-tools \
-        "platforms;android-29" \
+        "platforms;android-24" \
         "system-images;android-24;default;armeabi-v7a" \
 	| grep -v '^\[=*\s*\]'

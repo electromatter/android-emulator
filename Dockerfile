@@ -29,10 +29,10 @@ RUN cd /home/android/sdk && \
     touch /home/android/.android/repositories.cfg && \
     mvn versions:resolve-ranges -B && \
     yes | mvn exec:java -B \
-        -Dexec.args="--sdk_root=/home/android/.android --licenses"
+        -Dexec.args="--sdk_root=/home/android/.android --licenses" \
 	> /dev/null && \
     mvn exec:java -B \
-        -Dexec.args="--sdk_root=/home/android/.android --install tools"
+        -Dexec.args="--sdk_root=/home/android/.android --install tools" \
 	| grep -v '^\[=*\s*\]' && \
     rm -r /home/android/sdk /home/android/.m2
 

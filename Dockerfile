@@ -19,6 +19,9 @@ RUN apt-get update && \
     update-java-alternatives -s java-1.8.0-openjdk-amd64 && \
     groupadd android && useradd -g android -s /bin/bash -m android
 
+# Ensure the X11 sockets directory exists
+RUN mkdir /tmp/.X11-unix && chmod 1777 /tmp/.X11-unix
+
 # Run as an unprivileged user
 USER android
 WORKDIR /home/android

@@ -11,7 +11,7 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
         build-essential cmake git wget unzip zip openssh-client i3 \
-	libxcomposite1 pulseaudio libgl1-mesa-swx11 \
+	libxcomposite1 pulseaudio \
         openjdk-8-jdk-headless maven \
         python python3 python-pip python3-pip \
         xvfb ffmpeg && \

@@ -14,7 +14,7 @@ RUN apt-get update && \
 	libxcomposite1 pulseaudio x11vnc \
         openjdk-8-jdk-headless maven \
         python python3 python-pip python3-pip \
-        xvfb ffmpeg && \
+        xvfb ffmpeg mariadb-server mariadb-client && \
     apt-get clean && \
     update-java-alternatives -s java-1.8.0-openjdk-amd64 && \
     groupadd android && useradd -g android -s /bin/bash -m android
